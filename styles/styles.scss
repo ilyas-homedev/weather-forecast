@@ -1,0 +1,481 @@
+@font-face {
+    font-family: 'Roboto-regular';
+    src: url(./fonts/Roboto-Regular.ttf);
+}
+@font-face {
+    font-family: 'Roboto-bold';
+    src: url(./fonts/Roboto-Bold.ttf);
+}
+$font-family: 'Roboto-regular';
+$font-family-bold: 'Roboto-bold';
+$bg-color: rgba(255, 255, 255, 0.5);
+$bg-color-dark: rgba(0, 0, 0, .5);
+$btn-bg: #355378;
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    min-height: 100%;
+}
+
+body {
+    background-image: url('https://c1.wallpaperflare.com/preview/780/968/872/rain-front-rain-clouds-rain-sky.jpg');
+    background-size: cover;
+    height: 100%;
+    padding-bottom: 3rem;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    position: relative;
+    font-family: $font-family-bold;
+    background-color: $btn-bg;
+    color: #fff;
+    position: relative;
+    cursor: pointer;
+    transition: all .3s ease-out;
+
+    &:hover {
+        background-color: #fff;
+        color: $btn-bg;
+    }
+}
+
+.dashboard {
+    padding: 1rem .5rem 0rem 3rem;
+    margin-bottom: .5rem;
+
+    .title {
+        font-family: $font-family-bold;
+        color: #eee;
+        display: inline-block;
+        padding: .3rem 1rem;
+        margin-top: .5rem;
+        background-color: rgba(0, 0, 0, .5);
+    }
+
+    .dash-container {
+        display: flex;
+        position: relative;
+        width: 100%;
+        justify-content: space-between;
+
+        .dash-wrap {
+            display: flex;
+
+            .bg-btn {
+                margin-right: 1rem;
+                padding: 0 1rem;
+                min-width: 141px;
+                box-sizing: border-box;
+        
+                .btn-icon {
+                    margin-left: .3rem;
+                }
+            }
+
+            .select {
+                padding: 0 .5rem;
+                margin-right: 1rem;
+                position: relative;
+                cursor: pointer;
+
+                .select__dropdown {
+                    display: none;
+                    width: 100%;
+                    z-index: 2;
+                    border: 1px solid #ccc;
+                    position: absolute;
+                    top: 2.5rem;
+                    border-radius: 5px;
+                    box-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
+            
+                    &.opened {
+                        display: block;
+                    }
+            
+                    .item {
+                        list-style: none;
+                        background-color: rgba(255, 255, 255, 0.7);
+                        padding: 0 1rem;
+                        cursor: pointer;
+                        color: rgba(0, 0, 0, .5);
+            
+                        &:hover {
+                            background-color: rgba(255, 255, 255, .9);
+                            color: rgb(0, 0, 0);
+                        }
+                    }
+                }
+            }
+
+            .temperature {
+                display: flex;
+
+                .cels {
+                    border-right: none;
+                    border-top-right-radius: 0;
+                    border-bottom-right-radius: 0;
+                    width: 2.5rem;
+
+                    &:hover {
+                        .degree {
+                            border-color: $btn-bg;
+                        }
+                    }
+                }
+            
+                .fahr {
+                    border-left: none;
+                    border-top-left-radius: 0;
+                    border-bottom-left-radius: 0;
+                    width: 2.5rem;
+
+                    &:hover {
+                        .degree {
+                            border-color: $btn-bg;
+                        }
+                    }
+                }
+            
+                .degree {
+                    display: inline-block;
+                    position: absolute;
+                    top: .8em;
+                    left: .6em;
+                    width: 3px;
+                    height: 3px;
+                    border: 1px solid #fff;
+                    border-radius: 50%;
+                }
+            
+                .choosen_temperature {
+                    background-color: #fff;
+                    color: $btn-bg;
+
+                    .degree {
+                        border-color: $btn-bg;
+                    }
+                }
+            }
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            z-index: -1;
+            display: none;
+            background-color: transparent;
+
+            &.shown {
+                z-index: 1;
+                display: block;
+            }
+        }
+
+        .search-container {
+            display: flex;
+            margin-right: 10rem;
+
+            .search-input {
+                width: 20rem;
+                border: 1px solid #ccc;
+                border-top-left-radius: 5px;
+                border-bottom-left-radius: 5px;
+                border-right: none;
+                font-size: 20px;
+                padding: 0 .5rem;
+            }
+
+            .times {
+                width: 2.5rem;
+                position: absolute;
+                right: 15rem;
+                border: none;
+                background-color: transparent;
+        
+                &::before {
+                    content: "";
+                    position: absolute;
+                    width: 1.6rem;
+                    height: 2px;
+                    background-color: #000;
+                    transform: rotate(45deg);
+                    background-color: #666666;
+                    transition: all .3s ease-out;
+                }
+        
+                &::after {
+                    content: "";
+                    position: absolute;
+                    width: 1.6rem;
+                    height: 2px;
+                    background-color: #000;
+                    transform: rotate(-45deg);
+                    background-color: #666666;
+                    transition: all .3s ease-out;
+                }
+        
+                &:hover {
+                    &::before, &::after {
+                        background-color: #000;
+                    }
+                }
+            }
+        
+            .microphone {
+                width: 2.5rem;
+                background-color: transparent;
+                border: none;
+                position: absolute;
+                right: 12.5rem;
+                color: #666666;
+        
+                i {
+                    transition: all .3s ease-out;
+                }
+        
+                &:hover {
+                    i {
+                        color: $btn-bg;
+                    }
+                }
+            }
+        
+            .magnifier {
+                height: 2.6rem;
+                width: 2.5rem;
+                border-bottom-left-radius: 0;
+                border-top-left-radius: 0;
+            }
+        }
+    }
+}
+
+
+.forecast {
+    display: flex;
+    height: 100vh;
+
+    &__container {
+        width: 50%;
+        border-radius: 10px;
+        margin: 3rem 1rem 0 3rem;
+        padding: 1rem;
+        box-sizing: border-box;
+        display: grid;
+        grid-template-rows: 1fr 3fr 1fr;
+        background-color: $bg-color-dark;
+
+        .forecast__header {
+            font-size: 36px;
+            font-family: $font-family-bold;
+            color: #fff;
+
+            @keyframes second {
+                0% {
+                    color: #fff;
+                }
+
+                50% {
+                    color: #fff;
+                }
+
+                51% {
+                    color: transparent;
+                }
+
+                100% {
+                    color: transparent;
+                }
+            }
+            .secondSemicolon {
+                animation: second 1s infinite;
+            }
+        }
+
+        .forecast__body {
+            display: grid;
+            grid-template-columns: 2.5fr 2fr;
+
+            .forecast__description {
+                font-family: $font-family-bold;
+                font-size: 20px;
+                color: #fff;
+                position: relative;
+                padding: 2rem .5rem;
+            }
+        }
+    }
+
+    .map {
+        width: 40%;
+        background-color: $bg-color-dark;
+        border-radius: 10px;
+        margin: 3rem 3rem 0rem 1rem;
+        padding: 1rem;
+        box-sizing: border-box;
+        position: relative;
+
+        .history {
+            display: none;
+
+            &.showHistory {
+                display: flex;
+            }
+
+            &__list {
+                max-height: 11rem;
+                overflow-y: scroll;
+                padding: 0 1rem 0 4rem;
+                width: 16rem;
+    
+                .history__item {
+                    list-style-type: none;
+                    font-family: $font-family;
+                    font-size: 20px;
+                    border-bottom: 2px solid #000;
+                    color: #ccc;
+                    line-height: 40px;  
+                    text-align: center;
+                    margin-bottom: 2px;
+                    cursor: pointer;
+                    transition: all .3s ease-out;
+                    display: flex;
+                    justify-content: space-between;
+    
+                    &:hover {
+                        background-color: $bg-color;
+                        color:rgba(0, 0, 0, 1);
+
+                        .deleteItem {
+                            color: rgba(0, 0, 0, 1);
+                        }
+
+                        .chooseMyCity {
+                            border-color: #666666;
+                        }
+                    }
+
+                    .chooseMyCity {
+                        width: 13px;
+                        height: 13px;
+                        border: 2px solid #eee;
+                        border-radius: 50%;
+                        margin: 11px 10px;
+                        color: transparent;
+                        background-color: transparent;
+                        border-color: transparent;
+                        transition: all .3s ease-out;
+
+                        &:hover {
+                            border-color: gold;
+                        }
+
+                        &.remember {
+                            border-color: goldenrod;
+                            background-color: gold;
+                            box-shadow: 0 0 3px gold;
+                        }
+                    }
+
+                    .cityName {
+                        pointer-events: none;
+                    }
+
+                    .deleteItem {
+                        float: right;
+                        font-size: 24px;
+                        padding: 0 13.6px;
+                        color: transparent;
+                        transition: all .3s ease-out;
+
+                        &:hover {
+                            color: tomato;
+                            background-color: #fff;
+                        }
+                    }
+                }
+            }
+
+            .clear_history_prompt {
+                color: #fff;
+                padding-top: 5px;
+                margin-left: 10px;
+                font-family: $font-family;
+                display: none;
+                text-align: center;
+                transition: all .3s ease-out;
+            }
+
+            .history__clear {
+                height: 30px;
+                width: 30px;
+                background-color: $btn-bg;
+                border: none;
+                text-align: center;
+                cursor: pointer;
+                transition: all .3s ease-out;
+
+                span {
+                    position: relative;
+                    pointer-events: none;
+
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        top: 14px;
+                        left: -13px;
+                        width: 1.6rem;
+                        height: 2px;
+                        background-color: #000;
+                        transform: rotate(45deg);
+                        background-color: #666666;
+                        transition: all .3s ease-out;
+                    }
+        
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        top: 14px;
+                        left: -13px;
+                        width: 1.6rem;
+                        height: 2px;
+                        background-color: #000;
+                        transform: rotate(-45deg);
+                        background-color: #666666;
+                        transition: all .3s ease-out;
+                    }
+                }
+
+                &:hover {
+                    background-color: #fff;
+
+                    ~.clear_history_prompt {
+                        display: block;
+                    }
+                }
+            }
+        }
+
+        .location {
+            border: 1px solid black;
+            height: 50%;
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+        }
+    }
+}

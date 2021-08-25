@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+    <link rel="stylesheet" href="/styles.c86c3119.css">
+    <title>Weather Forecast</title>
+<script src="/styles.c86c3119.js"></script></head>
+<body>
+    <header class="dashboard">
+        <div class="dash-container">
+            <div class="dash-wrap">
+                <div class="btn bg-btn"><span data-type="bgBtn">Background</span> <i class="fas fa-sync-alt btn-icon"></i></div>
+                <div class="overlay" data-type="overlay"></div>
+                <div class="btn select" data-type="select">
+                    <div>
+                        <span data-type="langTitle"></span>
+                        <i class="fas fa-chevron-down" data-type="arrow"></i>
+                    </div>
+                    <div class="select__dropdown" data-type="list">
+                        <ul></ul>
+                    </div>
+                </div>
+                <div class="temperature" data-type="temperature">
+                    <div class="btn cels choosen_temperature" data-type="cels"><span class="degree"></span>C</div>
+                    <div class="btn fahr" data-type="fahr"><span class="degree"></span>F</div>
+                </div>
+            </div>
+            <form class="search-container" data-type="form">
+                <input type="text" class="search-input" data-type="input" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search'">
+                <span class="btn times" data-type="cross"></span>
+                <span class="btn microphone" data-type="microphone"><i class="fas fa-microphone"></i></span>
+                <button class="btn magnifier" type="submit" data-type="search"><i class="fas fa-search"></i></button>
+            </form>
+        </div>
+        <a href="#"><h1 class="title" data-type="pageTitle"></h1></a>
+    </header>
+
+    <main class="forecast">
+        <div class="forecast__container">
+            <div class="forecast__header">
+                
+            </div>
+            <div class="forecast__body">
+                <div class="forecast__today">
+                    
+                </div>
+                <div class="forecast__description">
+                    
+                </div>
+            </div>
+            <div class="forecast__days">
+                Forecast for future days
+            </div>
+        </div>
+
+        <div class="map">
+            <div class="history">
+                <ul class="history__list" data-type="historyList">
+
+                </ul>
+                <div class="history__clear" data-type="clearHistory"><span></span></div>
+                <div class="clear_history_prompt" data-type="clear-history-prompt"></div>
+            </div>
+            
+            <div class="location">
+                <div class="map__container" data-type="map">
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="/script.a6e1fada.js"></script>
+</body>
+</html>
