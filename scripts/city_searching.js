@@ -1,3 +1,4 @@
+import {apiKey} from './config';
 import { getTemperature } from "./temperature";
 import { createHistory } from './history';
 import { languages } from './languages';
@@ -15,7 +16,6 @@ $form.addEventListener('submit', findCity)
 export function findCity(event) {
     event.preventDefault();
     const inputVal = $searchInput.value;
-    const apiKey = 'de29390a32a003bb4da54a21b0abe2bc';
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${inputVal}&appid=${apiKey}&units=metric`;
 
     fetch(url)
